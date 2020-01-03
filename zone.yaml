@@ -1,0 +1,18 @@
+#- name: Home
+#  latitude: !secret lat
+#  longitude: !secret long
+#  radius: 100
+#  icon: mdi:home
+
+#- name: Work
+#  latitude: !secret latpraca
+#  longitude: !secret longpraca
+#  radius: 400
+#  icon: mdi:castle
+
+#- name: Brono
+#  latitude: !secret latbro
+#  longitude: !secret longbro
+#  radius: 100
+#  icon: mdi:home
+#  passive: true

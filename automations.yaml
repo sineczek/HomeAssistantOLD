@@ -1,0 +1,125 @@
+##################################################################################
+### Ciemny motyw po uruchomieniu
+##################################################################################
+
+- alias: 'Set theme at startup'
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: frontend.set_theme
+    data:
+      name: Dark - Gray
+
+- alias: "Power state on HA start-up"
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoffs/state"
+        payload: "" 
+    - service: mqtt.publish
+      data:
+        topic: "tasmotas/cmnd/state"
+        payload: "" 
+
+- alias: "Homekit Start"
+  trigger:
+    - platform: homeassistant
+      event: start
+    - platform: event
+      event_type: zwave.network_ready
+    - platform: event
+      event_type: zwave.network_complete
+    - platform: event
+      event_type: zwave.network_complete_some_dead
+  action:
+    - delay: 00:01
+    - service: homekit.start
+##################################################################################
+### Zmiana motywu w zależności od pory dnia
+##################################################################################
+
+#- alias: 'Set HA theme for day and night'
+#  trigger:
+#    - platform: homeassistant
+#      event: start
+#    - platform: state
+#      entity_id: sun.sun
+#      to: above_horizon
+#    - platform: state
+#      entity_id: sun.sun
+#      to: below_horizon
+#  action:
+#    - service_template: frontend.set_theme
+#      data_template:
+#      name: > 
+#        {% if states.sun.sun.state == "above_horizon" %} Gray - Green
+#        {% else %} Dark - Gray
+#        {% endif %}
+          
+          
+          
+##################################################################################
+###BACKUP
+##################################################################################
+
+- alias: Codzienny BackUP o 6AM
+  id: codziennybackupiczyszczenie
+  hide_entity: true
+  trigger:
+    platform: time
+    at: '06:00:00'
+  action:
+    - service: hassio.snapshot_full
+      data_template:
+        name: BackUP {{now().strftime('%d-%m-&Y') }}
+    - service: rest_command.dobackup
+
+##################################################################################
+###POWIADOMIENIA
+##################################################################################
+
+
+#- alias: Wysłanie wiadomości przy Alercie
+#  trigger:
+#    - platform: state
+#      entity_id: input_boolean.test
+#      from: 'off'
+#      to: 'on'
+#  action:
+#   service: notify.nbox_dzienny
+#   data_template:
+#      title: 'Ktoś dzwoni do bramki'
+#      message: >
+#        "DING DONG"
+#      data:
+#        push:
+#          category: camera
+#        entity_id: camera.wejscie
+
+##################################################################################
+###ZASILANIE RPi
+##################################################################################
+
+#- id: rpi_power_issue
+#  alias: Power Problem Notification
+#  trigger:
+#  - platform: numeric_state
+#    entity_id: sensor.rpi_power_status
+#    value_template: '{{ state.attributes.value }}'
+#    above: 0
+#    for:
+#      minutes: 5
+#  condition:
+#  action:
+#  - service: persistent_notification.create
+#    data_template:
+#      message: "RPI Power reported {{ states.sensor.rpi_power_status.state }}. The state had changed from {{ trigger.from_state.state }} "
+#      title: Power Supply Issue
+#  - service: notify.notify
+#    data_template:
+#      message: "RPI Power reported {{ states.sensor.rpi_power_status.state }}. The state had  changed from {{ trigger.from_state.state }}"
+#      title: Power Supply Issue

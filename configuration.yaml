@@ -39,7 +39,6 @@ config:
 mobile_app:
 
 http:
-#  api_password: !secret pass
 
 updater:
   include_used_components: true
@@ -94,13 +93,6 @@ input_boolean:
     name: Gosia w domu
     initial: on
     
-#  komplet:
-#    name: Komplet w domu
-#    initial: on
-
-#  test:
-#    name: testowy boolean
-#    initial: off
 
 ##################################################################################
 ##################################### PI-HOLE ####################################
@@ -181,35 +173,6 @@ light:
       payload_off: "OFF"
       retain: true
       optimistic: false
-
-##################################################################################
-################################## nie działa ####################################
-###############problem z dodaniem Philips E27 bulbs do xiaomi home################
-##################################################################################
-#    - platform: xiaomi_miio
-#      name: Xiaomi Philips Smart LED Bulb 1
-#      host: 192.168.4.240
-#      token: ffffffffffffffffffffffffffffffff
-#      model: philips.light.bulb
-#    - platform: xiaomi_miio
-#      name: Xiaomi Philips Smart LED Bulb 2
-#      host: 192.168.4.241
-#      token: ffffffffffffffffffffffffffffffff
-#      model: philips.light.bulb
-#    - platform: xiaomi_miio
-#      name: Xiaomi Philips Smart LED Bulb 3
-#      host: 192.168.4.242
-#      token: ffffffffffffffffffffffffffffffff
-#      model: philips.light.bulb
-#yeelight:
-#  devices:
-#    192.168.4.240:
-#      name: Phillips LED 1 - Dzienny
-#    192.168.4.241:
-#      name: Phillips LED 2 - Dzienny
-#    192.168.4.242:
-#      name: Phillips LED 3 - Dzienny
-
 
 ##################################################################################
 #################################### SWITCHES ####################################
@@ -303,37 +266,6 @@ sensor:
       - alerts
       - firmware
 
-
-##################################################################################
-################################## nie działa ####################################
-############brak updatów stanu ładowania i bateria na stałym poziomie#############
-##################################################################################
-#  - platform: template
-#    sensors:
-#      battery_iphone:
-#        friendly_name: iPhone Battery - Gosia
-#        unit_of_measurement: '%'
-#        value_template: >-
-#            {%- if state_attr('device_tracker.iphone', 'battery') %}
-#                {{ state_attr('device_tracker.iphone', 'battery')|round }}
-#            {% else %}
-#                {{ states('sensor.battery_iphone') }}
-#            {%- endif %}
-#        device_class: battery
-
-#  - platform: template
-#    sensors:
-#      battery_iphone:
-#        friendly_name: iPhone Battery - Michał
-#        unit_of_measurement: '%'
-#        value_template: >-
-#            {%- if state_attr('device_tracker.iphone_2', 'battery') %}
-#                {{ state_attr('device_tracker.iphone_2', 'battery')|round }}
-#            {% else %}
-#                {{ states('sensor.battery_iphone_2') }}
-#            {%- endif %}
-#        device_class: battery
-
   - platform: time_date
     display_options: 'date_time'
     
@@ -388,32 +320,6 @@ sensor:
     region: 'EU'
     vehicle_type: car
 
-### Póki co nie ma czujnika w Skale ###
-
-#  - platform: looko2
-#    api_key: !secret looko2api
-#    name: LookO2
-#    station_id: '2C3AE830990F'
-#    monitored_conditions:
-#      - 'AverageHCHO'
-#      - 'AveragePM1'
-#      - 'AveragePM10'
-#      - 'AveragePM25'
-#      - 'Color'
-#      - 'HCHO'
-#      - 'Humidity'
-#      - 'IJP'
-#      - 'IJPDescription'
-#      - 'IJPDescriptionEN'
-#      - 'IJPString'
-#      - 'IJPStringEN'
-#      - 'Indoor'
-#      - 'PM1'
-#      - 'PM10'
-#      - 'PM25'
-#      - 'PreviousIJP'
-#      - 'Temperature'
-      
   - platform: attributes
     friendly_name: "atrybuty ostrzeżeń"
     attribute: description
@@ -432,29 +338,13 @@ sensor:
 ##################################################################################
 ###################################### SMOG ######################################
 ##################################################################################  
-#  - platform: mqtt
-#    state_topic: "tele/smogpole/SENSOR"
-#    name: "Temperatura"
-#    state_topic: "smogpole/tele/SENSOR"
-#    unit_of_measurement: '°C'
-#    value_template: "{{ value_json['BME280'].temperature }}"
-#  - platform: mqtt
-#    name: "Wilgotność"
-#    state_topic: "smogpole/tele/SENSOR"
-#    unit_of_measurement: '%'
-#    value_template: "{{ value_json['BME280'].Humidity }}"
-#  - platform: mqtt
-#    name: "Ciśnienie"
-#    state_topic: "smogpole/tele/SENSOR"
-#    unit_of_measurement: 'hPa'
-#    value_template: "{{ value_json['BME280']['Pressure'] }}"
+
   - platform: mqtt
     name: "Ciśnienie Nad Poziom Morza"
     state_topic: "smogpole/tele/SENSOR"
     unit_of_measurement: 'hPa'
     value_template: "{{ value_json.BME280['SeaPressure'] }}"
-#    value_template: "{{ value_json['BME280']['SeaPressure'] }}"
-#    value_template: "{{ value_json.BME280.SeaPressure }}"
+
   - platform: mqtt
     name: "Pyły PM 2.5"
     state_topic: "smogpole/tele/SENSOR"
@@ -467,13 +357,11 @@ sensor:
     value_template: "{{ value_json['SDS0X1'].PM10 }}" 
   - platform: mqtt
     name: "Temperatura na strychu"
-#    state_topic: "temp/strych"
     state_topic: "smogpole/tele/SENSOR"
     value_template: "{{ value_json['DHT11'].Temperature }}"
     unit_of_measurement: "°C"
   - platform: mqtt
     name: "Wilgotność na strychu"
-#    state_topic: "hum/strych"     
     state_topic: "smogpole/tele/SENSOR"
     value_template: "{{ value_json['DHT11'].Humidity }}"
     unit_of_measurement: "%"
@@ -496,252 +384,6 @@ sensor:
           {% else %}
             mdi:door-closed
           {% endif %}
-
-##################################################################################
-##################################### KWIATKI ####################################
-##################################################################################
-
-#Kwiatek 1:  C4:7C:8D:6A:FD:A3      MQTT D   Dendrobium Nobile - parapet dzienny
-#Kwiatek 2:  C4:7C:8D:6B:00:E0      MQTT G   Fuchsia Fulgens - nad gankiem
-#Kwiatek 3:  C4:7C:8D:6B:01:0C      MQTT G   Rosa Multiflora - koło bramki
-#Kwiatek 4:  C4:7C:8D:6A:E2:F7      MQTT D   Phalaenopsis Andorra - parapet dzienny
-#Kwiatek 5:  C4:7C:8D:6A:E4:01      MQTT D   Viola Alpina - parapet dzienny
-#Kwiatek 6:  C4:7C:8D:6A:E4:C0      MQTT D   Prunus Triloba - parapet dzienny
-#Kwiatek 7:  C4:7C:8D:6A:E3:F9      MQTT G   Rosa Gloria Dei - koło podjazdu
-#Kwiatek 8:  C4:7C:8D:6A:E4:9A      MQTT G   Petunia Opera Supreme - parapet ganku
-#Kwiatek 9:  C4:7C:8D:6A:D9:30      MQTT D   Yucca Rostrata - parapet dzienny
-#Kwiatek 10: C4:7C:8D:6A:E6:58      MQTT D   Ficus Benjamina - parapet dzienny
-#Kwiatek 11: C4:7C:8D:6A:E4:11      MQTT G   Delphinium Delphis Emerald - koło podjazdu
-#Kwiatek 12: C4:7C:8D:6A:E4:B3      MQTT G   Delphinium Aurora - ogródek za domem
-#Kwiatek 13: C4:7C:8D:
-#Kwiatek 14: C4:7C:8D:
-#Kwiatek 15: C4:7C:8D:
-#Kwiatek 16: C4:7C:8D:
-#Kwiatek 17: C4:7C:8D:
-#Kwiatek 18: C4:7C:8D:
-#Kwiatek 19: C4:7C:8D:
-#Kwiatek 20: C4:7C:8D:
-#Kwiatek 21: C4:7C:8D:
-#Kwiatek 22: C4:7C:8D:
-
-#Wymiana baterii 24.09.2019 !! w Kwiatkach: 1,4-12
-
-plant:
-#Kwiatek 1 - Dendonodrium Nobile - parapet dzienny
-  Kwiatek1:
-    sensors:
-      moisture: sensor.miflora_kwiatek1_moisture
-      battery: sensor.miflora_kwiatek1_battery
-      temperature: sensor.miflora_kwiatek1_temperature
-      conductivity: sensor.miflora_kwiatek1_conductivity
-      brightness: sensor.miflora_kwiatek1_light
-    min_moisture: 15
-    max_moisture: 60
-    min_conductivity: 350
-    max_conductivity: 2000
-#    min_brightness: 2000
-    max_brightness: 25000
-    min_temperature: 8
-    max_temperature: 35
-    min_battery: 17
-
-#Kwiatek 2 - Fuchsia - nad gankiem    
-  Kwiatek2:
-    sensors:
-      moisture: sensor.miflora_kwiatek2_moisture
-      battery: sensor.miflora_kwiatek2_battery
-      temperature: sensor.miflora_kwiatek2_temperature
-      conductivity: sensor.miflora_kwiatek2_conductivity
-      brightness: sensor.miflora_kwiatek2_light
-    min_moisture: 15
-    max_moisture: 60
-    min_conductivity: 350
-    max_conductivity: 2000
-#    min_brightness: 2000
-    max_brightness: 30000
-    min_temperature: 8
-    max_temperature: 35
-    min_battery: 17
-
-#Kwiatek 3 - Rosa Multiflora - koło bramki    
-  Kwiatek3:
-    sensors:
-      moisture: sensor.miflora_kwiatek3_moisture
-      battery: sensor.miflora_kwiatek3_battery
-      temperature: sensor.miflora_kwiatek3_temperature
-      conductivity: sensor.miflora_kwiatek3_conductivity
-      brightness: sensor.miflora_kwiatek3_light
-    min_moisture: 17
-    max_moisture: 60
-    min_conductivity: 400
-    max_conductivity: 2000
-#    min_brightness: 3000
-    max_brightness: 65000
-    min_temperature: 8
-    max_temperature: 35
-    min_battery: 17
-    
-#Kwiatek 4 - Phalaenopsis Andorra - parapet dzienny
-  Kwiatek4:
-    sensors:
-      moisture: sensor.miflora_kwiatek4_moisture
-      battery: sensor.miflora_kwiatek4_battery
-      temperature: sensor.miflora_kwiatek4_temperature
-      conductivity: sensor.miflora_kwiatek4_conductivity
-      brightness: sensor.miflora_kwiatek4_light
-    min_moisture: 15
-    max_moisture: 60
-    min_conductivity: 350
-    max_conductivity: 2000
-#    min_brightness: 2000
-    max_brightness: 30000
-    min_temperature: 15
-    max_temperature: 32
-    min_battery: 17
-
-#Kwiatek 5 - Viola Alpina - parapet dzienny
-  Kwiatek5:
-    sensors:
-      moisture: sensor.miflora_kwiatek5_moisture
-      battery: sensor.miflora_kwiatek5_battery
-      temperature: sensor.miflora_kwiatek5_temperature
-      conductivity: sensor.miflora_kwiatek5_conductivity
-      brightness: sensor.miflora_kwiatek5_light
-    min_moisture: 15
-    max_moisture: 60
-    min_conductivity: 350
-    max_conductivity: 2000
-#    min_brightness: 2000
-    max_brightness: 45000
-    min_temperature: 6
-    max_temperature: 35
-    min_battery: 17  
-    
-#Kwiatek 6 - Prunus Triloba - przed domem
-  Kwiatek6:
-    sensors:
-      moisture: sensor.miflora_kwiatek6_moisture
-      battery: sensor.miflora_kwiatek6_battery
-      temperature: sensor.miflora_kwiatek6_temperature
-      conductivity: sensor.miflora_kwiatek6_conductivity
-      brightness: sensor.miflora_kwiatek6_light
-    min_moisture: 15
-    max_moisture: 60
-    min_conductivity: 350
-    max_conductivity: 2000
-#    min_brightness: 2000
-    max_brightness: 60000
-    min_temperature: 5
-    max_temperature: 35
-    min_battery: 17     
-
-#Kwiatek 7 - Rosa Gloria Dei - koło podjazdu   
-  Kwiatek7:
-    sensors:
-      moisture: sensor.miflora_kwiatek7_moisture
-      battery: sensor.miflora_kwiatek7_battery
-      temperature: sensor.miflora_kwiatek7_temperature
-      conductivity: sensor.miflora_kwiatek7_conductivity
-      brightness: sensor.miflora_kwiatek7_light
-    min_moisture: 17
-    max_moisture: 60
-    min_conductivity: 350
-    max_conductivity: 2000
-#    min_brightness: 2000
-    max_brightness: 65000
-    min_temperature: 8
-    max_temperature: 35
-    min_battery: 17
-
-#Kwiatek 8 - Petunia Opera Supreme - parapet ganku   
-  Kwiatek8:
-    sensors:
-      moisture: sensor.miflora_kwiatek8_moisture
-      battery: sensor.miflora_kwiatek8_battery
-      temperature: sensor.miflora_kwiatek8_temperature
-      conductivity: sensor.miflora_kwiatek8_conductivity
-      brightness: sensor.miflora_kwiatek8_light
-    min_moisture: 17
-    max_moisture: 60
-    min_conductivity: 350
-    max_conductivity: 2000
-#    min_brightness: 3000
-    max_brightness: 60000
-    min_temperature: 5
-    max_temperature: 35
-    min_battery: 17
-
-#Kwiatek 9 - Yucca Rostrata
-  Kwiatek9:
-    sensors:
-      moisture: sensor.miflora_kwiatek9_moisture
-      battery: sensor.miflora_kwiatek9_battery
-      temperature: sensor.miflora_kwiatek9_temperature
-      conductivity: sensor.miflora_kwiatek9_conductivity
-      brightness: sensor.miflora_kwiatek9_light
-    min_moisture: 15
-    max_moisture: 60
-    min_conductivity: 350
-    max_conductivity: 2000
-#    min_brightness: 2000
-    max_brightness: 50000
-    min_temperature: 4
-    max_temperature: 35
-    min_battery: 17
-
-#Kwiatek 10 - Ficus Benjamina - parapet dzienny
-  Kwiatek10:
-    sensors:
-      moisture: sensor.miflora_kwiatek10_moisture
-      battery: sensor.miflora_kwiatek10_battery
-      temperature: sensor.miflora_kwiatek10_temperature
-      conductivity: sensor.miflora_kwiatek10_conductivity
-      brightness: sensor.miflora_kwiatek10_light
-    min_moisture: 20
-    max_moisture: 60
-    min_conductivity: 350
-    max_conductivity: 2000
-#    min_brightness: 2000
-    max_brightness: 35000
-    min_temperature: 8
-    max_temperature: 32
-    min_battery: 17  
-    
-#Kwiatek 11 - Delphinium Delphis Emerald - koło podjazdu   
-  Kwiatek11:
-    sensors:
-      moisture: sensor.miflora_kwiatek11_moisture
-      battery: sensor.miflora_kwiatek11_battery
-      temperature: sensor.miflora_kwiatek11_temperature
-      conductivity: sensor.miflora_kwiatek11_conductivity
-      brightness: sensor.miflora_kwiatek11_light
-    min_moisture: 15
-    max_moisture: 60
-    min_conductivity: 350
-    max_conductivity: 2000
-#    min_brightness: 2000
-    max_brightness: 50000
-    min_temperature: 5
-    max_temperature: 35
-    min_battery: 17
-
-#Kwiatek 12 - Delphinium Aurora - ogródek za domem    
-  Kwiatek12:
-    sensors:
-      moisture: sensor.miflora_kwiatek12_moisture
-      battery: sensor.miflora_kwiatek12_battery
-      temperature: sensor.miflora_kwiatek12_temperature
-      conductivity: sensor.miflora_kwiatek12_conductivity
-      brightness: sensor.miflora_kwiatek12_light
-    min_moisture: 17
-    max_moisture: 60
-    min_conductivity: 350
-    max_conductivity: 2000
-#    min_brightness: 3000
-    max_brightness: 50000
-    min_temperature: 5
-    max_temperature: 35
-    min_battery: 17
 
 
 ##################################################################################
@@ -806,26 +448,6 @@ media_player:
     source_bouquet: '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.dbe00.tv" ORDER BY bouquet'
     use_channel_icon: true
 
-      
-##################################################################################
-################################## POWIADOMIENIA #################################
-################################## nie  działają #################################
-##################################################################################
-#notify:
-#  - platform: enigma
-#    host: !secret nbox_dzienny_url
-#    port: 80
-#    username: root
-#    password: !secret pass
-#    name: nBox Dzienny
-    
-#  - platform: enigma
-#    host: !secret nbox_salon_url
-#    port: 80
-#    username: root
-#    password: !secret pass
-#    name: nBox Salon
-    
 ##################################################################################
 ##################################### POGODA #####################################
 ##################################################################################
@@ -873,4 +495,4 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 zone: !include zone.yaml
-
+plant: !include kwiatki.yaml

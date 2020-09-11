@@ -13,16 +13,17 @@ MENU:
 
 ---
 
-## Home Assistant
-!(https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png|HomeScreen)
-![https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png|HomeScreen]
-![https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png]
-![1](https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png|HomeScreen)
-![2][https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png|HomeScreen]
-![https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png]
 
+![1](https://github.com/sineczek/HomeAssistant/blob/master/www/01_home_screen.png)
 
-#zaktualizować!#
+test:
+<p align="center">
+  <img width="460" height="300" src="https://github.com/sineczek/HomeAssistant/blob/master/www/01_home_screen.png">
+</p>
+<div style="text-align:center"><img src="https://github.com/sineczek/HomeAssistant/blob/master/www/01_home_screen.png" /></div>
+
+# zaktualizować! 
+
 Obecnie pracuje system w wersji [Home Assistanta 0.104.0](https://www.home-assistant.io/ "Home Assistant")
 
 ### Home Asistant AddOns

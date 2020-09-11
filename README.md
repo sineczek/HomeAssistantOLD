@@ -1,6 +1,10 @@
 # Home Assistant 
 **Centrum Dowodzenia MądregoDomu**
 
+TO DO:
+- ukończyć pisanie README
+- podzielić na podstrony README (o ile się da - zbadać temat)
+- zaktualizować dane
 
 1. Historia
 2. Pod maską

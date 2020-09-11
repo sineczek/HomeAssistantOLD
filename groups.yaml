@@ -1,0 +1,162 @@
+##################################################################################
+#Widoki - karty
+##################################################################################
+
+bezpieczenstwo:
+ view: yes
+ name: Bezpieczeństwo
+ entities:
+
+pomieszczenia:
+ view: yes
+ name: Pomieszczenia
+ entities:
+  - group.czas
+  - group.archer
+  - group.neo_net
+  - group.neo_tv
+  - group.neo_lodowka
+  - group.neo_salon
+#  - group.pokoj_dzienny
+#  - group.pokoj_salon  
+#  - group.pokoj_kuchnia
+#  - group.pokoj_kominek
+#  - group.pokoj_ganek
+  
+  
+przelaczniki:
+ view: yes
+ name: Przełączniki
+ entities:
+  - group.czas
+  - switch.sonoffosuszacz
+  - switch.sonoffsalon
+  - switch.shenzhen_neo_electronics_co_ltd_power_plug_12a_switch
+  - switch.shenzhen_neo_electronics_co_ltd_power_plug_12a_switch_2
+  - switch.shenzhen_neo_electronics_co_ltd_power_plug_12a_switch_3
+  - switch.shenzhen_neo_electronics_co_ltd_power_plug_12a_switch_4
+  - light.sonoffledytv
+  - light.sonoffledykuchni
+  - sensor.node_red
+  
+klimaty:
+ view: yes
+ name: Klimat
+ entities:
+ - group.czas
+ - group.darksky
+ - group.temp
+ - group.klimat_dzienny
+ - group.klimat_salon
+ - group.klimat_kuchnia
+ - group.klimat_ganek
+ - group.klimat_poddasza
+ - group.klimat_kominek
+ 
+##################################################################################
+#Grupy
+##################################################################################
+
+darksky:
+    name: Stacja Pogodowa Skała - DarkSky 
+    entities:
+      - weather.stacja_pogodowa_darksky
+
+
+czas:
+    name: Data i godzina
+    control: hidden
+    entities:
+      - sensor.date_time
+
+klimat_dzienny:
+    name: Temperatura w pokoju dziennym
+    control: hidden
+    entities:
+      - sensor.sonoffosuszacz_dht11_temperature
+      - sensor.sonoffosuszacz_dht11_humidity
+
+rodzinka:
+    name: Rodzinka
+    control: hidden
+    entities:
+      - device_tracker.gosia
+      - device_tracker.michal
+
+klimat_kuchnia:
+    name: Temperatura w kuchni
+    control: hidden
+    entities:
+    
+klimat_salon:
+    name: Temperatura w salonie
+    control: hidden
+    entities:
+      - sensor.sonoffsalon_dht11_temperature
+      - sensor.sonoffsalon_dht11_humidity
+
+swiatla:
+    name: Światła
+    entities:
+      - light.sonoffledytv
+      - light.sonoffledykuchnia
+
+klimat_ganek:
+    name: Temperatura w ganku
+    control: hidden
+    entities:
+
+klimat_kominek:
+    name: Temperatura przy kominku
+    control: hidden
+    entities:
+    
+klimat_poddasze:
+    name: Temperatura na poddaszu
+    control: hidden
+    entities:
+    
+neo_net:
+    name: NeT
+    control: hidden
+    entities:
+#      - sensor.devolo_home_control_unknown_type_2004_id_04a4_alarm_level
+#      - sensor.devolo_home_control_unknown_type_2004_id_04a4_alarm_type
+      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_current
+#      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_energy
+      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_power
+      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_voltage
+      
+neo_tv:
+    name: TV Dzienny
+    control: hidden
+    entities:
+#      - sensor.devolo_home_control_unknown_type_2004_id_04a4_alarm_level_2
+#      - sensor.devolo_home_control_unknown_type_2004_id_04a4_alarm_type_2
+      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_current_2
+#      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_energy_2
+      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_power_2
+      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_voltage_2
+          
+neo_salon:
+    name: TV Salon
+    control: hidden
+    entities:
+#      - sensor.devolo_home_control_unknown_type_2004_id_04a4_alarm_level_3
+#      - sensor.devolo_home_control_unknown_type_2004_id_04a4_alarm_type_3
+      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_current_3
+#      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_energy_3
+      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_power_3
+      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_voltage_3
+          
+neo_lodowka:
+    name: Lodówka
+    control: hidden
+    entities:
+#      - sensor.devolo_home_control_unknown_type_2004_id_04a4_alarm_level_4
+#      - sensor.devolo_home_control_unknown_type_2004_id_04a4_alarm_type_4
+      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_current_4
+#      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_energy_4
+      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_power_4
+      - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_voltage_4
+      

@@ -1,0 +1,526 @@
+homeassistant:
+  name: Centrum dowodzenia
+  latitude: !secret lat
+  longitude: !secret long
+  elevation: 431
+  unit_system: metric
+  time_zone: Europe/Warsaw
+  customize: !include customize.yaml
+
+##################################################################################
+################################# CUSTOM UPDATER #################################
+##################################################################################
+hacs:
+  token: !secret hacs_token
+breaking_changes:
+##################################################################################   
+##################################### PANELE #####################################
+##################################################################################
+panel_iframe:
+
+  tasmoadmin:
+    title: TasmoAdmin
+    icon: mdi:lightbulb-on
+    url: !secret tasmo_url 
+    
+##################################################################################
+################################## USTAWIENIA ####################################
+##################################################################################
+frontend:
+  themes: !include_dir_merge_named themes
+system_health:
+
+config:
+
+mobile_app:
+
+http:
+
+updater:
+  include_used_components: true
+  
+conversation:
+
+#history:
+#  include:
+#    domains:
+#      - sensor
+#      - switch
+#      - media_player
+#      - binary_sensor
+      
+
+#logbook:
+
+map:
+
+sun:
+
+cloud:
+
+logger:
+  default: info
+
+homekit:
+  auto_start: false
+  filter:
+    exclude_domains:
+      - automation
+      - input_boolean
+      - script
+
+ios:
+
+discovery:
+  enable:
+    - enigma2
+    - homekit
+
+##################################################################################
+################################### KOMPONENTY ###################################
+##################################################################################
+zwave:
+  usb_path: /dev/ttyACM0
+#  usb_path: /dev/ttyACM1
+ 
+#input_boolean:
+#  michal:
+#    name: Michał w domu
+#    initial: on
+#
+#  gosia:
+#    name: Gosia w domu
+#    initial: on
+#    
+
+##################################################################################
+##################################### PI-HOLE ####################################
+##################################################################################  
+#pi_hole:
+#  - host: 192.168.4.9 #!secret pi_url 
+
+
+##################################################################################
+##################################### NETATMO ####################################
+##################################################################################  
+netatmo:
+#  #api_key: !secret netatmoapi
+#  #secret_key: !secret netatmokey
+#  #username: !secret netatmol
+#  #password: !secret netatmop
+  client_id: !secret netatmoapi
+  client_secret: !secret netatmokey
+##################################################################################
+##################################### KAMERY #####################################
+##################################################################################
+#ffmpeg:
+
+#camera:
+#  - platform: ffmpeg
+#    name: Wejście
+#    input: !secret camera_wejscie 
+#
+#  - platform: ffmpeg
+#    name: Podwórko
+#    input: !secret camera_podworko
+
+spotify:
+  client_id: !secret spotify_client
+  client_secret: !secret spotify_secret
+
+icloud:
+  - username: !secret icloudl
+    password: !secret icloudp
+
+adb_service:
+  host: 192.168.4.21
+  
+##################################################################################    
+#################################### ŚWIATŁA #####################################    
+##################################################################################
+light:
+  - platform: philips_ambilight
+    name: Salon Ambilight
+    host: 192.168.4.25
+    username: ZrNPz9P7pP3ZsRlY
+    password: 877c2e75e7a03223fb9f097d4cc4ebfb7f8169ed736ab0ef036e2a566bbadaee
+##########Świeta
+#    - platform: mqtt
+#      name: 'Choinka RGB przed domem'
+#      state_topic: "cmnd/RFBridge_fb/RfKey2"
+#      command_topic: "cmnd/RFBridge_fb/RfKey2"
+#      qos: 1
+#      payload_on: "ON"
+#      payload_off: "OFF"
+#      retain: true
+#      optimistic: false
+#    - platform: mqtt
+#      name: 'Schody nad Gankiem'
+#      state_topic: "cmnd/RFBridge_fb/RfKey1"
+#      command_topic: "cmnd/RFBridge_fb/RfKey1"
+#      qos: 1
+#      payload_on: "ON"
+#      payload_off: "OFF"
+#      retain: true
+#      optimistic: false
+#    - platform: mqtt
+#      name: 'Choinka RGB za domem'
+#      state_topic: "cmnd/RFBridge_fb/RfKey12"
+#      command_topic: "cmnd/RFBridge_fb/RfKey12"
+#      qos: 1
+#      payload_on: "ON"
+#      payload_off: "OFF"
+#      retain: true
+#      optimistic: false
+#    - platform: mqtt
+#      name: 'Szafa w pokoju dziennym'
+#      state_topic: "cmnd/RFBridge_fb/RfKey4"
+#      command_topic: "cmnd/RFBridge_fb/RfKey4"
+#      qos: 1
+#      payload_on: "ON"
+#      payload_off: "OFF"
+#      retain: true
+#      optimistic: false
+#    - platform: mqtt
+#      name: 'Regał w salonie'
+#      state_topic: "cmnd/RFBridge_fb/RfKey5"
+#      command_topic: "cmnd/RFBridge_fb/RfKey5"
+#      qos: 1
+#      payload_on: "ON"
+#      payload_off: "OFF"
+#      retain: true
+#      optimistic: false
+#
+##################################################################################
+#################################### SWITCHES ####################################
+##################################################################################
+switch:
+  - platform: mqtt
+    name: "LEDwKuchni"
+    state_topic: "sonoffledykuchnia/stat/POWER"
+    command_topic: "sonoffledykuchnia/cmnd/POWER"
+    availability_topic: "sonoffledykuchnia/tele/LTW"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: false
+  - platform: mqtt
+    name: "Taras Podest"
+    state_topic: "taraspodest/stat/STATE"
+    command_topic: "taraspodest/cmnd/POWER"
+    availability_topic: "taraspodest/tele/LTW"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+  - platform: mqtt
+    name: "Taras Góra LED"
+    state_topic: "tasmota_taras_gora/stat/POWER"
+    command_topic: "stasmota_taras_gora/cmnd/POWER"
+    availability_topic: "tasmota_taras_gora/tele/LTW"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: false
+##################################################################################
+################################## AntiStorm #####################################
+##################################################################################
+sensor antistorm:
+  - platform: rest
+    resource: !secret antistorm_url
+    name: "Czas do burzy"
+    value_template: >
+         {% if value_json.t_b == 255 %}
+             Brak info
+         {% else %}
+             {{ ((value_json.t_b)) }}
+         {% endif %}
+    unit_of_measurement: "min"
+  - platform: rest
+    resource: !secret antistorm_url
+    name: "Prawdopodobieństwo burzy"
+    value_template: >
+         {% if value_json.p_b < 10 %}
+             Brak/małe
+         {% elif ((value_json.p_b >= 10) and (value_json.p_b < 30)) %}
+             Średnie
+         {% elif ((value_json.p_b >= 30) and (value_json.p_b < 50)) %}
+             Duże
+         {% elif value_json.p_b > 50 %}
+             Bardzo duże
+         {% endif %}
+  - platform: rest
+    resource: !secret antistorm_url
+    name: "Prawdopodobieństwo opadów"
+    value_template: >
+         {% if value_json.p_o < 10 %}
+             Brak/małe
+         {% elif ((value_json.p_o >= 10) and (value_json.p_o < 30)) %}
+             Średnie
+         {% elif ((value_json.p_o >= 30) and (value_json.p_o < 50)) %}
+             Duże
+         {% elif value_json.p_o > 50 %}
+             Bardzo duże
+         {% endif %}
+  - platform: rest
+    resource: !secret antistorm_url
+    name: "Czas do opadów"
+    value_template: >
+         {% if value_json.t_o == 255 %}
+             Brak info
+         {% else %}
+             {{ ((value_json.t_o)) }}
+         {% endif %}
+    
+    unit_of_measurement: "min"
+
+
+##################################################################################
+#################################### SENSORY #####################################
+##################################################################################
+sensor:
+  - platform: unifigateway
+    host: !secret unifi_url
+    username: !secret unifil
+    password: !secret unifip
+    monitored_conditions:
+      - www
+      - wlan
+      - lan
+      - alerts
+      - firmware
+
+  - platform: time_date
+    display_options: 'date_time'
+    
+  - platform: systemmonitor
+    resources:
+    - type: disk_use_percent
+      arg: /home
+    - type: memory_free
+    - type: last_boot
+    - type: processor_use
+  
+  - platform: antistorm
+    station_id: !secret antistorm_id
+    monitored_conditions:
+      - 'storm_probability'
+      - 'storm_time'
+      - 'rain_probability'
+      - 'rain_time'
+
+  - platform: uptime
+    name: Uptime HA
+    unit_of_measurement: hours
+
+  - platform: waze_travel_time
+    name: Droga do pracy
+    origin: !secret waze_orgin
+    destination: !secret waze_praca
+    region: 'EU'
+    vehicle_type: car
+  - platform: waze_travel_time
+    name: Droga na Bronowicką
+    origin: !secret waze_orgin
+    destination: !secret waze_brono
+    region: 'EU'
+    vehicle_type: car
+  - platform: waze_travel_time
+    name: Droga do Taty
+    origin: !secret waze_orgin
+    destination: !secret waze_tata
+    region: 'EU'
+    vehicle_type: car
+  - platform: waze_travel_time
+    name: Droga do siostry Puszczyka
+    origin: !secret waze_orgin
+    destination: !secret waze_sis1
+    region: 'EU'
+    vehicle_type: car
+  - platform: waze_travel_time
+    name: Droga do siostry Perkoza
+    origin: !secret waze_orgin
+    destination: !secret waze_sis2
+    region: 'EU'
+    vehicle_type: car
+
+  - platform: attributes
+    friendly_name: "atrybuty ostrzeżeń"
+    attribute: description
+    icon: 'mdi:weather-lightning'
+    entities:
+      - binary_sensor.burze_dzis_net_storm_warning
+      - binary_sensor.burze_dzis_net_heat_warning
+      - binary_sensor.burze_dzis_net_precipitation_warning
+      - binary_sensor.burze_dzis_net_frost_warning
+      - binary_sensor.burze_dzis_net_storms_nearby
+      - binary_sensor.burze_dzis_net_tornado_warning
+      - binary_sensor.burze_dzis_net_wind_warning
+      
+##################################################################################
+###################################### SMOG ######################################
+##################################################################################  
+
+  - platform: mqtt
+    name: "Ciśnienie Nad Poziom Morza"
+    state_topic: "smogpole/tele/SENSOR"
+    unit_of_measurement: 'hPa'
+    value_template: "{{ value_json.BME280['SeaPressure'] }}"
+
+  - platform: mqtt
+    name: "Pyły PM 2.5"
+    state_topic: "smogpole/tele/SENSOR"
+    unit_of_measurement: 'ug/m3'
+    value_template: "{{ value_json['SDS0X1']['PM2.5'] }}"    
+  - platform: mqtt
+    name: "Pyły PM 10"
+    state_topic: "smogpole/tele/SENSOR"
+    unit_of_measurement: 'ug/m3'
+    value_template: "{{ value_json['SDS0X1'].PM10 }}" 
+  - platform: mqtt
+    name: "Temperatura na strychu"
+    state_topic: "smogpole/tele/SENSOR"
+    value_template: "{{ value_json['DHT11'].Temperature }}"
+    unit_of_measurement: "°C"
+  - platform: mqtt
+    name: "Wilgotność na strychu"
+    state_topic: "smogpole/tele/SENSOR"
+    value_template: "{{ value_json['DHT11'].Humidity }}"
+    unit_of_measurement: "%"
+##################################################################################
+##################################### Z-WAVE #####################################
+##################################################################################
+  - platform: template
+    sensors:
+      door_entrance:
+        friendly_name: Drzwi wejściowe
+        value_template: >
+          {% if is_state("sensor.sensative_strips_access_control", "22") %}
+          otwarte
+          {% else %}
+          zamknięte
+          {% endif %}
+        icon_template: >-
+          {% if is_state("sensor.sensative_strips_access_control", "22") %}
+            mdi:door-open
+          {% else %}
+            mdi:door-closed
+          {% endif %}
+
+
+##################################################################################
+############################# BINARY SENSORS #####################################
+##################################################################################
+binary_sensor:
+  - platform: mqtt
+    name: "Drzwi na strych"
+    state_topic: "smogpole/stat/POWER"
+    payload_on: "OFF"
+    payload_off: "ON"
+    device_class: door
+
+  - platform: mqtt
+    name: "Woda w Piwnicy"
+    state_topic: "tele/sonoff/RESULT"
+    value_template: '{{value_json.RfReceived.Data}}'
+    payload_on: "DA4DA9"
+    device_class: Moisture
+
+  - platform: antistorm
+    station_id: 148
+    monitored_conditions:
+      - 'storm_alarm'
+      - 'rain_alarm'
+      - 'storm_active'
+      
+  - platform: burze_dzis_net
+    api_key: !secret api_burze_dzis_net
+    latitude: !secret lat
+    longitude: !secret long
+    warnings:
+      - frost_warning
+      - heat_warning
+      - wind_warning
+      - precipitation_warning
+      - storm_warning
+      - tornado_warning
+    storms_nearby:
+      radius: 30
+
+
+##################################################################################
+################################## MEDIA PLAYER ##################################
+##################################################################################
+media_player:
+  - platform: philips_android_tv
+    name: Philips_TV
+    host: 192.168.4.25
+    mac: 70:af:24:bc:a2:0a
+    username: ZrNPz9P7pP3ZsRlY
+    password: 877c2e75e7a03223fb9f097d4cc4ebfb7f8169ed736ab0ef036e2a566bbadaee
+    favorite_channels_only: false
+
+    #tylko dla pamięci
+#  - platform: enigma2
+#    host: !secret nbox_dzienny_url
+#    name: nBox Dzienny
+#    username: root
+#    password: !secret pass
+#    #source_bouquet: '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.polskie_hd.tv" ORDER BY bouquet'
+#    use_channel_icon: true
+#
+#  - platform: enigma2
+#    host: !secret nbox_salon_url
+#    name: nBox Salon
+#    username: root
+#    password: !secret pass
+#    source_bouquet: '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.dbe00.tv" ORDER BY bouquet'
+#    use_channel_icon: true
+
+
+##################################################################################
+##################################### POGODA #####################################
+##################################################################################
+weather:
+  - platform: darksky
+    api_key: !secret darkapi
+    latitude: !secret lat
+    longitude: !secret long
+    name: Stacja pogodowa DarkSky
+    mode: daily
+
+##################################################################################    
+###################################### TTS #######################################
+##################################################################################
+tts:
+  - platform: google_translate
+    service_name: google_say
+
+##################################################################################
+############################# ELEMENTY DO LOGOWANIA ##############################
+##################################################################################
+recorder:
+  exclude:
+    domains:
+      - group
+      - input_boolean
+      - input_numvber
+      - imput_select
+      - media_player
+      - weblink
+      - updater
+      - weather
+    entities:
+      - sun.sun
+  purge_keep_days: 7
+
+
+##################################################################################
+########################## DODATKOWE PLIKI USTAWIEŃ ##############################
+##################################################################################
+
+script: !include scripts.yaml
+plant: !include kwiatki.yaml

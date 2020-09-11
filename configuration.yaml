@@ -80,8 +80,8 @@ discovery:
 ################################### KOMPONENTY ###################################
 ##################################################################################
 zwave:
-  usb_path: /dev/ttyACM0
-#  usb_path: /dev/ttyACM1
+#  usb_path: /dev/ttyACM0
+  usb_path: /dev/ttyACM1
  
 #input_boolean:
 #  michal:

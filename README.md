@@ -24,7 +24,7 @@ test:
 
 # zaktualizować! 
 
-Obecnie pracuje system w wersji [Home Assistanta 0.104.0](https://www.home-assistant.io/ "Home Assistant")
+Obecnie pracuje system w wersji [Home Assistanta 0.144.4](https://www.home-assistant.io/ "Home Assistant")
 
 ### Home Asistant AddOns
 - 🔹  [Configurator](https://github.com/home-assistant/hassio-addons/tree/master/configurator "Configurator")     v. 4.2

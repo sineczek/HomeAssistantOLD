@@ -9,13 +9,18 @@ MENU:
 
 - [Historia](https://github.com/sineczek/HomeAssistant/blob/master/www/historia.md)
 - [Pod maską](https://github.com/sineczek/HomeAssistant/blob/master/www/pod_maska.md)
-- [Node-Red] (https://github.com/sineczek/HomeAssistant/blob/master/www/nodered.md) 
+- [Node-Red](https://github.com/sineczek/HomeAssistant/blob/master/www/nodered.md) 
 
 ---
 
 ## Home Assistant
-[[/www/01%20HA%20main%2006012020.png|HomeScreen]]
+(https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png|HomeScreen)
+[https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png|HomeScreen]
+[https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png]
 
+
+
+#zaktualizować!#
 Obecnie pracuje system w wersji [Home Assistanta 0.104.0](https://www.home-assistant.io/ "Home Assistant")
 
 ### Home Asistant AddOns

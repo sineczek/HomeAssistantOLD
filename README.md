@@ -14,10 +14,12 @@ MENU:
 ---
 
 ## Home Assistant
-(https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png|HomeScreen)
-[https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png|HomeScreen]
-[https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png]
-
+!(https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png|HomeScreen)
+![https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png|HomeScreen]
+![https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png]
+![1](https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png|HomeScreen)
+![2][https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png|HomeScreen]
+![https://github.com/sineczek/HomeAssistant/blob/master/www/01%20HA%20main%2006012020.png]
 
 
 #zaktualizować!#

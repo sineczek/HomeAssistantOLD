@@ -8,7 +8,9 @@
 - [Node-Red](https://github.com/sineczek/HomeAssistant/blob/master/www/nodered.md)
 
 ---
-
+<p align="center">
+  <img width="800" height="600" src="https://github.com/sineczek/HomeAssistant/blob/master/www/06.png">
+</p>
 **Internet :arrow_down_small:60Mbps / :arrow_up_small:10Mbps**
 
 - :large_blue_diamond:[UniFi USG](https://www.ui.com/unifi-routing/usg/ "UniFi USG")

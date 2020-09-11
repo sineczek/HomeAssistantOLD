@@ -1,6 +1,10 @@
 # Home Assistant 
 **Centrum Dowodzenia MądregoDomu**
 
+<p align="center">
+  <img height="300" src="https://github.com/sineczek/HomeAssistant/blob/master/www/01.png">
+</p>
+
 TO DO:
 - ukończyć pisanie README
 - zaktualizować dane
@@ -14,13 +18,25 @@ MENU:
 ---
 
 
-![1](https://github.com/sineczek/HomeAssistant/blob/master/www/01_home_screen.png)
-
-test:
 <p align="center">
-  <img width="460" height="300" src="https://github.com/sineczek/HomeAssistant/blob/master/www/01_home_screen.png">
+  <img width="800" height="600" src="https://github.com/sineczek/HomeAssistant/blob/master/www/01.png">
 </p>
-<div style="text-align:center"><img src="https://github.com/sineczek/HomeAssistant/blob/master/www/01_home_screen.png" /></div>
+
+<p align="center">
+  <img width="800" height="600" src="https://github.com/sineczek/HomeAssistant/blob/master/www/02.png">
+</p>
+
+<p align="center">
+  <img width="800" height="600" src="https://github.com/sineczek/HomeAssistant/blob/master/www/03.png">
+</p>
+
+<p align="center">
+  <img width="800" height="600" src="https://github.com/sineczek/HomeAssistant/blob/master/www/04.png">
+</p>
+
+<p align="center">
+  <img width="800" height="600" src="https://github.com/sineczek/HomeAssistant/blob/master/www/05.png">
+</p>
 
 # zaktualizować! 
 

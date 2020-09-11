@@ -9,7 +9,7 @@
 
 ---
 <p align="center">
-  <img width="800" height="600" src="https://github.com/sineczek/HomeAssistant/blob/master/www/06.png">
+  <img width="800" src="https://github.com/sineczek/HomeAssistant/blob/master/www/06.png">
 </p>
 **Internet :arrow_down_small:60Mbps / :arrow_up_small:10Mbps**
 

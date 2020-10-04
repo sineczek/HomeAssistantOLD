@@ -7,6 +7,23 @@ TO DO:
   - nowa struktura plików HA
   - nowe ustawienia / hasła / parametry
 
+# wykonane:
+  - nowy VLAN i sieć WiFi dla IoT
+  - przekonfigurowanie wszystkich urządzeń IoT na nowe ustawienia
+  - nowe ustawienia NASa, dla VM 500GB
+  - Instalacj Servera Ubuntu w puni 500GB
+
+# do zrobienia:
+  - instalacja docker
+  - instalacja rancher
+  - instalacja kubernetes
+  - instalacja Home Assistant
+  - integracja Travis'a
+  - przekonfigurowanie Home Assistant (podział konfiguracji na pakiety - w części już wykonany)
+  - ponowne połaczenie z GitHubem (możliwe, że nowe repozytorium)
+  
+  
+  
 ---
 MENU: 
 

@@ -2,8 +2,11 @@
 **Centrum Dowodzenia MądregoDomu**
 
 TO DO:
-- ukończyć pisanie README
-- zaktualizować dane
+# reorganizacja:
+  - nowe ustawienia NAS
+  - nowa struktura plików HA
+  - nowe ustawienia / hasła / parametry
+
 ---
 MENU: 
 

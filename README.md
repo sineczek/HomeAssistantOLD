@@ -11,7 +11,7 @@ TO DO:
   - nowy VLAN i sieć WiFi dla IoT
   - przekonfigurowanie wszystkich urządzeń IoT na nowe ustawienia
   - nowe ustawienia NASa, dla VM 500GB
-  - Instalacj Servera Ubuntu w puni 500GB
+  - Instalacj Servera Ubuntu w puli 500GB
 
 # do zrobienia:
   - instalacja docker

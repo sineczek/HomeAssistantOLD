@@ -12,15 +12,14 @@ TO DO:
   - przekonfigurowanie wszystkich urządzeń IoT na nowe ustawienia
   - nowe ustawienia NASa, dla VM 500GB
   - Instalacj Servera Ubuntu w puli 500GB
-
-# do zrobienia:
   - instalacja docker
-  - instalacja rancher
-  - instalacja kubernetes
   - instalacja Home Assistant
   - integracja Travis'a
   - przekonfigurowanie Home Assistant (podział konfiguracji na pakiety - w części już wykonany)
-  - ponowne połaczenie z GitHubem (możliwe, że nowe repozytorium)
+  - ponowne połaczenie z GitHubem (nowe repozytorium - sineczek/HomeAssistant)
+
+# do zrobienia:
+
   
   
   

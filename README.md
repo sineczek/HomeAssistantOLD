@@ -1,7 +1,10 @@
 # Home Assistant 
 **Centrum Dowodzenia MądregoDomu**
 
-TO DO:
+# deprecated sineczek/HomeAssistantOLD
+# new repo: [sineczek/HomeAssistant](https://github.com/sineczek/HomeAssistant)
+
+
 # reorganizacja:
   - nowe ustawienia NAS
   - nowa struktura plików HA
@@ -11,14 +14,13 @@ TO DO:
   - nowy VLAN i sieć WiFi dla IoT
   - przekonfigurowanie wszystkich urządzeń IoT na nowe ustawienia
   - nowe ustawienia NASa, dla VM 500GB
-  - Instalacj Servera Ubuntu w puli 500GB
+  - instalacj Servera Ubuntu w puli 500GB
   - instalacja docker
   - instalacja Home Assistant
   - integracja Travis'a
   - przekonfigurowanie Home Assistant (podział konfiguracji na pakiety - w części już wykonany)
   - ponowne połaczenie z GitHubem (nowe repozytorium - sineczek/HomeAssistant)
 
-# do zrobienia:
 
   
   
